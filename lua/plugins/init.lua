@@ -22,7 +22,7 @@ return {
   		"vim", "lua", "vimdoc",
         "html", "css", "javascript",
         "c", "cpp", "go", "rust",
-        "haskell"
+        "haskell", "dockerfile", "markdown"
   	  },
   	},
   },
