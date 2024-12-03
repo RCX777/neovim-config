@@ -22,7 +22,7 @@ return {
   		'vim', 'lua', 'vimdoc',
         'html', 'css', 'javascript',
         'c', 'cpp', 'go', 'rust',
-        'haskell'
+        'haskell', 'markdown'
   	  },
   	},
   },
@@ -53,7 +53,10 @@ return {
   },
 
   {
-    'ntpeters/vim-better-whitespace', enable = true, lazy = false
+    'johnfrankmorgan/whitespace.nvim', enable = true, lazy = false,
+    config = function()
+      require 'configs.whitespace'
+    end
   },
 
   {
