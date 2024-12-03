@@ -10,7 +10,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      require('nvchad.configs.lspconfig').defaults()
+      require 'nvchad.configs.lspconfig'.defaults()
       require 'configs.lspconfig'
     end,
   },
@@ -31,10 +31,10 @@ return {
     'hrsh7th/nvim-cmp',
     opts = {
       mapping = {
-        ['<Tab>']  = require('cmp').mapping.confirm({ select = true}),
-        ['<CR>']   = require('cmp').mapping.abort(),
-        ['<Down>'] = require('cmp').mapping.select_next_item(),
-        ['<Up>']   = require('cmp').mapping.select_prev_item(),
+        ['<Tab>']  = require 'cmp'.mapping.confirm({ select = true}),
+        ['<CR>']   = require 'cmp'.mapping.abort(),
+        ['<Down>'] = require 'cmp'.mapping.select_next_item(),
+        ['<Up>']   = require 'cmp'.mapping.select_prev_item(),
       }
     }
   },
@@ -72,6 +72,13 @@ return {
     'lewis6991/gitsigns.nvim', enable = true,
     config = function()
       require 'configs.gitsigns'
+    end
+  },
+
+  {
+    'echasnovski/mini.nvim', enable = true, lazy = false,
+    config = function()
+      require 'mini.align'.setup()
     end
   }
 }

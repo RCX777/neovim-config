@@ -1,4 +1,4 @@
-require "nvchad.options"
+require 'nvchad.options'
 
 -- add yours here!
 
@@ -17,12 +17,12 @@ o.shiftwidth = 4   -- Number of spaces inserted when indenting
 
 o.updatetime = 50
 
-o.colorcolumn = "80,100,120"
+o.colorcolumn = '80,100,120'
 
 o.swapfile = false
 o.backup   = false
-o.undodir  = os.getenv("HOME") .. "/.local/state/vim/undodir"
+o.undodir  = os.getenv('HOME') .. '/.local/state/vim/undodir'
 o.undofile = true
 
-g.better_whitespace_ctermcolor = "red"
+g.better_whitespace_ctermcolor = 'red'
 
