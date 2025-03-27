@@ -5,7 +5,7 @@ local capabilities = require 'nvchad.configs.lspconfig'.capabilities
 
 local lspconfig = require 'lspconfig'
 local servers = {
-  'pyright',
+  'basedpyright',
   'nixd',
   'hls',
   'rust_analyzer',
