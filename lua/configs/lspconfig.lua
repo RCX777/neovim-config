@@ -34,3 +34,12 @@ lspconfig.clangd.setup {
   },
 }
 
+lspconfig.omnisharp.setup {
+  cmd = { 'dotnet', os.getenv('HOME') .. '/.local/share/omnisharp/OmniSharp.dll' },
+  settings = {
+    FormattingOptions = {
+      EnableEditorConfigSupport = true
+    }
+  }
+}
+

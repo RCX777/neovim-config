@@ -80,6 +80,10 @@ return {
     config = function()
       require 'mini.align'.setup()
     end
+  },
+
+  {
+    'github/copilot.vim', enable = true, lazy = false
   }
 }
 
