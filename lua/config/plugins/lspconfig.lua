@@ -1,8 +1,29 @@
 local function configure_mappings()
   local map = vim.keymap.set
 
+  local function goto_definition_with_fallback()
+    local params = vim.lsp.util.make_position_params(0, 'utf-32')
+
+    vim.lsp.buf_request(0, 'textDocument/definition', params, function(err, result, _, _)
+      if err then
+        vim.notify('LSP: Error on definition request: ' .. err.message, vim.log.levels.ERROR)
+        return
+      end
+      if not result or vim.tbl_isempty(result) then
+        vim.notify 'LSP: No definition found'
+        return
+      end
+
+      if #result == 1 then
+        vim.lsp.util.show_document(result[1])
+      else
+        require('telescope.builtin').lsp_definitions()
+      end
+    end)
+  end
+
   map('n', 'gD', vim.lsp.buf.declaration, { desc = 'LSP: Go to declaration' })
-  map('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to definition' })
+  map('n', 'gd', goto_definition_with_fallback, { desc = 'LSP: Go to definition' })
 end
 
 local function init()
