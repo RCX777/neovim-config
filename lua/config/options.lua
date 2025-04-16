@@ -28,9 +28,9 @@ o.ruler = false
 opt.relativenumber = true
 
 -- Disable nvim intro
-opt.shortmess:append "sI"
+opt.shortmess:append 'sI'
 
-o.signcolumn = "yes"
+o.signcolumn = 'yes'
 o.splitbelow = true
 o.splitright = true
 o.timeoutlen = 400
@@ -41,5 +41,5 @@ o.updatetime = 250
 
 -- Go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
+opt.whichwrap:append '<>[]hl'
 
