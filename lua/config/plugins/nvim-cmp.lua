@@ -1,17 +1,22 @@
 local config = function ()
   local cmp = require 'cmp'
+
   return {
     sources = {
-      { name = "nvim_lsp" },
-      { name = "buffer" },
-      { name = "nvim_lua" },
-      { name = "path" },
+      { name = 'nvim_lsp' },
+      { name = 'buffer' },
+      { name = 'nvim_lua' },
+      { name = 'path' },
     },
     mapping = {
       ['<Tab>']  = cmp.mapping.confirm({ select = true}),
       ['<CR>']   = cmp.mapping.abort(),
       ['<Down>'] = cmp.mapping.select_next_item(),
       ['<Up>']   = cmp.mapping.select_prev_item(),
+    },
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     }
   }
 end

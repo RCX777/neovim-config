@@ -17,22 +17,22 @@ local config = {
     indent_markers = { enable = true },
     icons = {
       glyphs = {
-        default = "󰈚",
+        default = '󰈚',
         folder = {
-          default = "",
-          empty = "",
-          empty_open = "",
-          open = "",
-          symlink = "",
+          default = '',
+          empty = '',
+          empty_open = '',
+          open = '',
+          symlink = '',
         },
         git = {
-          unmerged = "",
-          unstaged = "✗",
-          staged = "✓",
-          renamed = "➜",
-          deleted = "",
-          untracked = "★",
-          ignored = "◌"
+          unmerged = '',
+          unstaged = '✗',
+          staged = '✓',
+          renamed = '➜',
+          deleted = '',
+          untracked = '★',
+          ignored = '◌'
         },
       },
     },
