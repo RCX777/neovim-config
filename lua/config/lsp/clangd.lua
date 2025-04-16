@@ -4,9 +4,8 @@ vim.lsp.config('clangd', {
     '--background-index',
     '--clang-tidy',
     '--completion-style=bundled',
-    '--function-arg-placeholders=0'
+    '--function-arg-placeholders=0',
   },
 })
 
-vim.lsp.enable('clangd')
-
+vim.lsp.enable 'clangd'

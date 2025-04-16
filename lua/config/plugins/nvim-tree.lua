@@ -32,14 +32,14 @@ local config = {
           renamed = '➜',
           deleted = '',
           untracked = '★',
-          ignored = '◌'
+          ignored = '◌',
         },
       },
     },
   },
 }
 
-local function init ()
+local function init()
   local map = vim.keymap.set
 
   map('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', { desc = 'nvim-tree toggle window' })
@@ -53,6 +53,5 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   opts = config,
-  init = init
+  init = init,
 }
-

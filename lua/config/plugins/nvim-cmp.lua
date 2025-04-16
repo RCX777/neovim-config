@@ -1,4 +1,4 @@
-local config = function ()
+local config = function()
   local cmp = require 'cmp'
 
   return {
@@ -9,15 +9,15 @@ local config = function ()
       { name = 'path' },
     },
     mapping = {
-      ['<Tab>']  = cmp.mapping.confirm({ select = true}),
-      ['<CR>']   = cmp.mapping.abort(),
+      ['<Tab>'] = cmp.mapping.confirm { select = true },
+      ['<CR>'] = cmp.mapping.abort(),
       ['<Down>'] = cmp.mapping.select_next_item(),
-      ['<Up>']   = cmp.mapping.select_prev_item(),
+      ['<Up>'] = cmp.mapping.select_prev_item(),
     },
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
-    }
+    },
   }
 end
 
@@ -50,5 +50,5 @@ return {
       'hrsh7th/cmp-path',
     },
   },
-  opts = config
+  opts = config,
 }

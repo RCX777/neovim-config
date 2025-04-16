@@ -1,7 +1,16 @@
 local config = {
   ensure_installed = {
-    'bash', 'c', 'cpp', 'c_sharp', 'dockerfile', 'markdown',
-    'lua', 'luadoc', 'printf', 'vim', 'vimdoc',
+    'bash',
+    'c',
+    'cpp',
+    'c_sharp',
+    'dockerfile',
+    'markdown',
+    'lua',
+    'luadoc',
+    'printf',
+    'vim',
+    'vimdoc',
   },
   highlight = {
     enable = true,
@@ -17,4 +26,3 @@ return {
   build = ':TSUpdate',
   opts = config,
 }
-

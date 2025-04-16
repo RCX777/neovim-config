@@ -8,7 +8,7 @@ local config = {
     virt_text = true,
     virt_text_pos = 'eol',
     delay = 0,
-  }
+  },
 }
 
 local on_attach = function(bufnr)
@@ -22,17 +22,17 @@ local on_attach = function(bufnr)
 
   map('n', ']', function()
     if vim.wo.diff then
-      vim.cmd.normal({']', bang = true})
+      vim.cmd.normal { ']', bang = true }
     else
-      gitsigns.nav_hunk('next')
+      gitsigns.nav_hunk 'next'
     end
   end)
 
   map('n', '[', function()
     if vim.wo.diff then
-      vim.cmd.normal({'[', bang = true})
+      vim.cmd.normal { '[', bang = true }
     else
-      gitsigns.nav_hunk('prev')
+      gitsigns.nav_hunk 'prev'
     end
   end)
 end
@@ -41,8 +41,8 @@ config.on_attach = on_attach
 
 return {
   'lewis6991/gitsigns.nvim',
-  enable = true, lazy = false,
+  enable = true,
+  lazy = false,
   event = 'User FilePost',
-  opts = config
+  opts = config,
 }
-

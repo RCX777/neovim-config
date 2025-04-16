@@ -12,6 +12,7 @@ local config = {
 
 return {
   'williamboman/mason.nvim',
-  lazy = false, priority = 900,
-  opts = config
+  lazy = false,
+  priority = 900,
+  opts = config,
 }

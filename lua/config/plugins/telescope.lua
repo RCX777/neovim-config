@@ -1,4 +1,4 @@
-local function config ()
+local function config()
   return {
     defaults = {
       prompt_prefix = '   ',
@@ -23,7 +23,7 @@ local function config ()
   }
 end
 
-local function init ()
+local function init()
   local map = vim.keymap.set
 
   map('n', '<leader>ff', '<cmd>Telescope find_files<CR>', { desc = 'telescope find files' })
@@ -43,5 +43,5 @@ return {
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
   cmd = 'Telescope',
   opts = config,
-  init = init
+  init = init,
 }

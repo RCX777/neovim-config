@@ -1,6 +1,9 @@
 return {
-  'catppuccin/nvim', name = 'catppuccin', lazy = false, priority = 1000,
-  init = function ()
+  'catppuccin/nvim',
+  name = 'catppuccin',
+  lazy = false,
+  priority = 1000,
+  init = function()
     vim.cmd.colorscheme 'catppuccin-mocha'
   end,
   opts = {
@@ -26,7 +29,6 @@ return {
       telescope = true,
       treesitter = true,
       cmp = true,
-    }
-  }
+    },
+  },
 }
-

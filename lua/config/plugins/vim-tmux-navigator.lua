@@ -1,4 +1,4 @@
-local function init ()
+local function init()
   local map = vim.keymap.set
 
   map('n', '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'window left' })
@@ -8,7 +8,8 @@ local function init ()
 end
 
 return {
-  'christoomey/vim-tmux-navigator', enable = true, lazy = false,
-  init = init
+  'christoomey/vim-tmux-navigator',
+  enable = true,
+  lazy = false,
+  init = init,
 }
-

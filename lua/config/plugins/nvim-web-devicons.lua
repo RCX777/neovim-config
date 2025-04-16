@@ -1,7 +1,6 @@
-local config = { }
+local config = {}
 
 return {
   'nvim-tree/nvim-web-devicons',
-  opts = config
+  opts = config,
 }
-
