@@ -11,6 +11,9 @@ local config = {
     width = 30,
     preserve_window_proportions = true,
   },
+  git = {
+    ignore = false,
+  },
   renderer = {
     root_folder_label = false,
     highlight_git = true,
