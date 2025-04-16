@@ -14,3 +14,6 @@ map('n', '<leader>y', '"+Y', { desc = 'Yank into `+` register' })
 map('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
   desc = 'Replace all occurences of word under cursor',
 })
+
+map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = 'Code action' })
+

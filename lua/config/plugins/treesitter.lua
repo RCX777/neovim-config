@@ -9,6 +9,7 @@ local config = {
     'lua',
     'luadoc',
     'printf',
+    'python',
     'vim',
     'vimdoc',
   },
