@@ -48,12 +48,14 @@ local function init()
       current_line = true,
       format = function(diagnostic)
         local icon = ''
-        if diagnostic.source:match 'Lua' then
-          icon = ' '
-        elseif diagnostic.source:match 'clang' then
-          icon = ' '
-        elseif diagnostic.source:match 'pyright' then
-          icon = ' '
+        if diagnostic.source then
+          if diagnostic.source:match 'Lua' then
+            icon = ' '
+          elseif diagnostic.source:match 'clang' then
+            icon = ' '
+          elseif diagnostic.source:match 'pyright' then
+            icon = ' '
+          end
         end
         local message = string.format('%s %s', icon, diagnostic.message)
         return message
