@@ -8,12 +8,29 @@ local config = function()
       { name = 'nvim_lua' },
       { name = 'path' },
     },
+
     mapping = {
-      ['<Tab>'] = cmp.mapping.confirm { select = true },
-      ['<CR>'] = cmp.mapping.abort(),
-      ['<Down>'] = cmp.mapping.select_next_item(),
-      ['<Up>'] = cmp.mapping.select_prev_item(),
+      ['<Tab>'] = cmp.mapping(function(fallback)
+        local ok, suggestion = pcall(require, 'copilot.suggestion')
+
+        if ok and suggestion.is_visible() then
+          if cmp.get_selected_entry() then
+            cmp.confirm { select = false }
+          else
+            suggestion.accept()
+          end
+        elseif cmp.visible() then
+          cmp.confirm { select = true }
+        else
+          fallback()
+        end
+      end, {'i', 'c'}),
+
+      ['<Left>'] = cmp.mapping.abort(),
+      ['<Down>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior },
+      ['<Up>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior },
     },
+
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),

@@ -1,5 +1,9 @@
 return {
-  'github/copilot.vim',
-  enable = true,
-  lazy = false,
+  'zbirenbaum/copilot.lua',
+  event = 'InsertEnter',
+  opts = {
+    suggestion = {
+      auto_trigger = true
+    }
+  }
 }
