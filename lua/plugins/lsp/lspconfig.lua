@@ -47,6 +47,7 @@ local function init()
   require 'config.lsp.lua'
   require 'config.lsp.clangd'
   require 'config.lsp.basedpyright'
+  require 'config.lsp.ts_ls'
 
   configure_mappings()
 end

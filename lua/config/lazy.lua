@@ -22,11 +22,17 @@ vim.opt.runtimepath:prepend(lazypath)
 -- Setup lazy.nvim
 require('lazy').setup {
   spec = {
-    { import = 'config.plugins' },
+    { import = 'plugins' },
+    { import = 'plugins.ai' },
+    { import = 'plugins.cmp' },
+    { import = 'plugins.fmt' },
+    { import = 'plugins.git' },
+    { import = 'plugins.lsp' },
+    { import = 'plugins.ui' },
   },
   change_detection = {
     -- automatically check for config file changes and reload the ui
     enabled = false,
     notify = false, -- get a notification when changes are found
-  },
+  }
 }

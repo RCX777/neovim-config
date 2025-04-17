@@ -12,6 +12,24 @@ local config = {
     'python',
     'vim',
     'vimdoc',
+    'javascript',
+    'typescript',
+    'tsx',
+    'json',
+    'html',
+    'css',
+    'scss',
+    'yaml',
+    'toml',
+    'rust',
+    'go',
+    'java',
+    'php',
+    'ruby',
+    'swift',
+    'kotlin',
+    'haskell',
+    'xml'
   },
   highlight = {
     enable = true,
@@ -26,4 +44,7 @@ return {
   cmd = { 'TSInstall', 'TSBufEnable', 'TSBufDisable', 'TSModuleInfo' },
   build = ':TSUpdate',
   opts = config,
+  config = function(_, opts)
+    require('nvim-treesitter.configs').setup(opts)
+  end,
 }
