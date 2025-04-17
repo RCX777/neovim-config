@@ -28,9 +28,27 @@ end
 
 local function init()
   vim.diagnostic.config {
-    virtual_lines = true,
-    signs = true,
-    underline = true,
+    virtual_lines = {
+      current_line = true,
+      format = function(diagnostic)
+        local icon = ''
+        if diagnostic.source:match('Lua') then
+          icon = ' '
+        elseif diagnostic.source:match('clang') then
+          icon = ' '
+        elseif diagnostic.source:match('pyright') then
+          icon = ' '
+        end
+        local message = string.format('%s %s', icon, diagnostic.message)
+        return message
+      end,
+    },
+    underline = {
+      severity = {
+        min = vim.diagnostic.severity.HINT,
+        max = vim.diagnostic.severity.ERROR,
+      }
+    },
     update_in_insert = false,
     severity_sort = true,
   }
