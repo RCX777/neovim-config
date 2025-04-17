@@ -24,7 +24,7 @@ local config = function()
         else
           fallback()
         end
-      end, {'i', 'c'}),
+      end, {'i'}),
 
       ['<Left>'] = cmp.mapping.abort(),
       ['<Down>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior },
