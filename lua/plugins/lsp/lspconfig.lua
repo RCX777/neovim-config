@@ -2,7 +2,7 @@ local function configure_mappings()
   local map = vim.keymap.set
 
   local function goto_definition_with_fallback()
-    local params = vim.lsp.util.make_position_params(0, 'utf-32')
+    local params = vim.lsp.util.make_position_params(0, 'utf-8')
 
     vim.lsp.buf_request(0, 'textDocument/definition', params, function(err, result, _, _)
       if err then
@@ -15,7 +15,7 @@ local function configure_mappings()
       end
 
       if #result == 1 then
-        vim.lsp.util.show_document(result[1])
+        vim.lsp.util.show_document(result[1], 'utf-8')
       else
         require('telescope.builtin').lsp_definitions()
       end
@@ -24,6 +24,22 @@ local function configure_mappings()
 
   map('n', 'gD', vim.lsp.buf.declaration, { desc = 'LSP: Go to declaration' })
   map('n', 'gd', goto_definition_with_fallback, { desc = 'LSP: Go to definition' })
+
+  ---@param direction 'next' | 'prev'
+  local function diagnostic_goto(direction)
+    local get_diagnostic
+    if direction == 'next' then
+      get_diagnostic = vim.diagnostic.get_next
+    elseif direction == 'prev' then
+      get_diagnostic = vim.diagnostic.get_prev
+    end
+    return function()
+      vim.diagnostic.jump { diagnostic = get_diagnostic() }
+    end
+  end
+
+  map('n', ']d', diagnostic_goto 'next', { desc = 'Go to next diagnostic' })
+  map('n', '[d', diagnostic_goto 'prev', { desc = 'Go to previous diagnostic' })
 end
 
 local function init()
@@ -32,11 +48,11 @@ local function init()
       current_line = true,
       format = function(diagnostic)
         local icon = ''
-        if diagnostic.source:match('Lua') then
+        if diagnostic.source:match 'Lua' then
           icon = ' '
-        elseif diagnostic.source:match('clang') then
+        elseif diagnostic.source:match 'clang' then
           icon = ' '
-        elseif diagnostic.source:match('pyright') then
+        elseif diagnostic.source:match 'pyright' then
           icon = ' '
         end
         local message = string.format('%s %s', icon, diagnostic.message)
@@ -47,7 +63,7 @@ local function init()
       severity = {
         min = vim.diagnostic.severity.HINT,
         max = vim.diagnostic.severity.ERROR,
-      }
+      },
     },
     update_in_insert = false,
     severity_sort = true,
