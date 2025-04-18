@@ -48,13 +48,28 @@ local function init()
       current_line = true,
       format = function(diagnostic)
         local icon = ''
+        print(diagnostic.source)
         if diagnostic.source then
           if diagnostic.source:match 'Lua' then
             icon = ' '
           elseif diagnostic.source:match 'clang' then
             icon = ' '
+          elseif diagnostic.source:match 'compiler' then -- This is source set by gopls, as confusing as it seems
+            icon = ' '
           elseif diagnostic.source:match 'pyright' then
             icon = ' '
+          elseif diagnostic.source:match 'typescript' then
+            icon = ' '
+          elseif diagnostic.source:match 'css' then
+            icon = ' '
+          elseif diagnostic.source:match 'json' then
+            icon = ' '
+          elseif diagnostic.source:match 'YAML' then
+            icon = ' '
+          elseif diagnostic.source:match 'shellcheck' then
+            icon = ' '
+          elseif diagnostic.source:match 'docker' then
+            icon = ' '
           end
         end
         local message = string.format('%s %s', icon, diagnostic.message)
@@ -71,7 +86,7 @@ local function init()
     severity_sort = true,
   }
 
-  -- Set up borders for floating windows
+  --- Set up borders for floating windows
   local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
   ---@diagnostic disable-next-line: duplicate-set-field
   vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
@@ -80,10 +95,11 @@ local function init()
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
   end
 
-  require 'config.lsp.lua'
-  require 'config.lsp.clangd'
-  require 'config.lsp.basedpyright'
-  require 'config.lsp.ts_ls'
+  --- Enable LSP configurations found in the config/lsp directory
+  --- @diagnostic disable-next-line: param-type-mismatch
+  for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath 'config' .. '/lua/config/lsp', [[v:val =~ '\.lua$']])) do
+    require('config.lsp.' .. file:gsub('%.lua$', ''))
+  end
 
   configure_mappings()
 end
