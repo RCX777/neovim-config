@@ -17,3 +17,4 @@ map('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
 
 map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = 'Code action' })
 
+map('n', '<leader>l', '<cmd>Lazy<CR>', { desc = 'Lazy' })

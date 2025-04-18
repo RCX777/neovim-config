@@ -29,7 +29,7 @@ local config = {
     'swift',
     'kotlin',
     'haskell',
-    'xml'
+    'xml',
   },
   highlight = {
     enable = true,

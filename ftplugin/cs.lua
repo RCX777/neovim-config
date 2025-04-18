@@ -7,4 +7,3 @@ ol.softtabstop = 4
 ol.expandtab = true
 ol.autoindent = true
 ol.smartindent = true
-

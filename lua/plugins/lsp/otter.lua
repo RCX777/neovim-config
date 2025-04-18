@@ -1,11 +1,10 @@
 local function init()
   vim.api.nvim_create_autocmd({ 'BufEnter', 'TextChanged', 'TextChangedI' }, {
     callback = function(args)
-      local bufnr = args.buf
-      local ft = vim.bo[bufnr].filetype
-
-      if ft == 'markdown' then
-        require('otter').activate()
+      if vim.bo[args.buf].filetype == 'markdown' then
+        vim.schedule(function()
+          require('otter').activate()
+        end)
       end
     end,
   })
@@ -16,6 +15,7 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
   },
+  ft = { 'markdown' },
   opts = {},
   init = init,
 }

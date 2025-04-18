@@ -3,5 +3,3 @@ return {
   lazy = false,
   keys = { '<leader>', '<c-w>', '"', "'", '`', 'c', 'v', 'g' },
 }
-
-

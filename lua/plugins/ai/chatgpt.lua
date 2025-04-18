@@ -17,5 +17,5 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope.nvim',
   },
-  init = init
+  init = init,
 }

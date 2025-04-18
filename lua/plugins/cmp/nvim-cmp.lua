@@ -15,7 +15,7 @@ local config = function()
 
         if ok and suggestion.is_visible() then
           if cmp.get_selected_entry() then
-            cmp.confirm { select = false }
+            cmp.confirm { select = true }
           else
             suggestion.accept()
           end

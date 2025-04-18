@@ -18,4 +18,3 @@ return {
     broad_search = true,
   },
 }
-
