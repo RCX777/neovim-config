@@ -24,6 +24,7 @@ local config = {
     'rust',
     'go',
     'java',
+    'groovy',
     'php',
     'ruby',
     'swift',

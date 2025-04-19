@@ -58,6 +58,8 @@ local function init()
             icon = ' '
           elseif diagnostic.source:match 'pyright' then
             icon = ' '
+          elseif diagnostic.source:match 'Java' then
+            icon = ' '
           elseif diagnostic.source:match 'typescript' then
             icon = ' '
           elseif diagnostic.source:match 'css' then

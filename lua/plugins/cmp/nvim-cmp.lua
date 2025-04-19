@@ -1,6 +1,34 @@
 local config = function()
   local cmp = require 'cmp'
 
+  local ok, suggestion = pcall(require, 'copilot.suggestion')
+  local copilot_enabled = true
+
+  local tab_complete
+  if ok and copilot_enabled then
+    tab_complete = function(fallback)
+      if suggestion.is_visible() then
+        if cmp.get_selected_entry() then
+          cmp.confirm { select = true }
+        else
+          suggestion.accept()
+        end
+      elseif cmp.visible() then
+        cmp.confirm { select = true }
+      else
+        fallback()
+      end
+    end
+  else
+    tab_complete = function(fallback)
+      if cmp.visible() then
+        cmp.confirm { select = true }
+      else
+        fallback()
+      end
+    end
+  end
+
   return {
     sources = {
       { name = 'nvim_lsp' },
@@ -10,22 +38,7 @@ local config = function()
     },
 
     mapping = {
-      ['<Tab>'] = cmp.mapping(function(fallback)
-        local ok, suggestion = pcall(require, 'copilot.suggestion')
-
-        if ok and suggestion.is_visible() then
-          if cmp.get_selected_entry() then
-            cmp.confirm { select = true }
-          else
-            suggestion.accept()
-          end
-        elseif cmp.visible() then
-          cmp.confirm { select = true }
-        else
-          fallback()
-        end
-      end, { 'i' }),
-
+      ['<Tab>'] = cmp.mapping(tab_complete),
       ['<Left>'] = cmp.mapping.abort(),
       ['<Down>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior },
       ['<Up>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior },
