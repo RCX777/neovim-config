@@ -9,7 +9,7 @@ return {
     suggestion = {
       auto_trigger = true,
       keymap = {
-        accept = '<Right>',
+        accept = '<S-Tab>',
       },
     },
     filetypes = {
