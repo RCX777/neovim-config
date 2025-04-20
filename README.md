@@ -3,6 +3,7 @@
 ## Project structure
 ```
 .
+├── init.lua
 ├── ftplugin
 │   └── <lang>.lua
 ├── lua
@@ -14,8 +15,12 @@
 │   │       └── <lsp>.lua
 │   └── plugins
 │       └── <plugin>.lua
-└── secrets
-    └── <secret>
+├─── secrets
+│   └── <secret>
+├─── README.md
+├─── LICENSE
+├─── .gitignore
+└─── .stylua.toml
 ```
 
 ## Plugin management
