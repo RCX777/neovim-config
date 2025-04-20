@@ -2,10 +2,10 @@ local config = function()
   local cmp = require 'cmp'
 
   local ok, suggestion = pcall(require, 'copilot.suggestion')
-  local copilot_enabled = true
+  local copilot_use_tab = false
 
   local tab_complete
-  if ok and copilot_enabled then
+  if ok and copilot_use_tab then
     tab_complete = function(fallback)
       if suggestion.is_visible() then
         if cmp.get_selected_entry() then

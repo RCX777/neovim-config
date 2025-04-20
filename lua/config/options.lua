@@ -10,11 +10,12 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
 -- Indenting
+o.tabstop = 4
+o.shiftwidth = 4
+o.softtabstop = 4
 o.expandtab = true
-o.shiftwidth = 2
+o.autoindent = true
 o.smartindent = true
-o.tabstop = 2
-o.softtabstop = 2
 
 opt.fillchars = { eob = ' ' }
 o.ignorecase = true
@@ -42,3 +43,11 @@ o.updatetime = 250
 -- Go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append '<>[]hl'
+
+-- Enable extra filetypes
+vim.filetype.add({
+  extension = {
+    service = 'systemd',
+  }
+})
+

@@ -8,9 +8,13 @@ return {
     },
     suggestion = {
       auto_trigger = true,
+      keymap = {
+        accept = '<Right>',
+      },
     },
     filetypes = {
       ['*'] = true,
     },
   },
 }
+
