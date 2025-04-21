@@ -9,9 +9,7 @@ ol.smartindent = true
 
 local ok, jdtls = pcall(require, 'jdtls')
 
-if not ok then
-  return
-end
+if not ok then return end
 
 local config = {
   cmd = { 'jdtls' },

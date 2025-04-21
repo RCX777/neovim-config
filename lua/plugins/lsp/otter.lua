@@ -1,11 +1,7 @@
 local function init()
   vim.api.nvim_create_autocmd({ 'BufEnter', 'TextChanged', 'TextChangedI' }, {
     callback = function(args)
-      if vim.bo[args.buf].filetype == 'markdown' then
-        vim.schedule(function()
-          require('otter').activate()
-        end)
-      end
+      if vim.bo[args.buf].filetype == 'markdown' then vim.schedule(function() require('otter').activate() end) end
     end,
   })
 end

@@ -33,9 +33,7 @@ local function configure_mappings()
     elseif direction == 'prev' then
       get_diagnostic = vim.diagnostic.get_prev
     end
-    return function()
-      vim.diagnostic.jump { diagnostic = get_diagnostic() }
-    end
+    return function() vim.diagnostic.jump { diagnostic = get_diagnostic() } end
   end
 
   map('n', ']d', diagnostic_goto 'next', { desc = 'Go to next diagnostic' })
