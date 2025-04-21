@@ -45,9 +45,8 @@ o.updatetime = 250
 opt.whichwrap:append '<>[]hl'
 
 -- Enable extra filetypes
-vim.filetype.add({
+vim.filetype.add {
   extension = {
     service = 'systemd',
-  }
-})
-
+  },
+}

@@ -3,4 +3,3 @@ vim.lsp.config('groovyls', {
 })
 
 vim.lsp.enable 'groovyls'
-
