@@ -33,6 +33,8 @@ local config = {
     'kotlin',
     'haskell',
     'xml',
+    'meson',
+    'make',
   },
   highlight = {
     enable = true,
