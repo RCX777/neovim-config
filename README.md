@@ -17,6 +17,9 @@
 │       └── <plugin>.lua
 ├─── secrets
 │   └── <secret>
+├─── queries
+│   └── <lang>
+│       └── <query>.scm
 ├─── README.md
 ├─── LICENSE
 ├─── .gitignore

@@ -5,6 +5,7 @@ local config = {
     'cpp',
     'c_sharp',
     'dockerfile',
+    'doxygen',
     'markdown',
     'lua',
     'luadoc',
@@ -14,6 +15,7 @@ local config = {
     'vimdoc',
     'javascript',
     'typescript',
+    'jsdoc',
     'tsx',
     'json',
     'html',
@@ -45,5 +47,10 @@ return {
   cmd = { 'TSInstall', 'TSBufEnable', 'TSBufDisable', 'TSModuleInfo' },
   build = ':TSUpdate',
   opts = config,
-  config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end,
+  config = function(_, opts)
+    -- This is done as jinja2 files ending in `.html` are recognized as htmldjango files
+    vim.treesitter.language.register('html', 'htmldjango')
+
+    require('nvim-treesitter.configs').setup(opts)
+  end,
 }
