@@ -1,14 +1,6 @@
 local api_key_path = vim.fn.stdpath 'config' .. '/secrets/openai.key'
 
 if vim.fn.filereadable(api_key_path) == 0 then
-  vim.notify(
-    'ChatGPT: OpenAI API key not found. To use the plugin, please create a file at ' .. api_key_path,
-    vim.log.levels.INFO
-  )
-  vim.notify(
-    'To disable this message, check out `' .. vim.fn.stdpath 'config' .. '/lua/plugins/ai/chatgpt.lua`',
-    vim.log.levels.INFO
-  )
   return {}
 end
 
