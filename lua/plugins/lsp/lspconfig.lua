@@ -45,37 +45,29 @@ local function init()
     virtual_lines = {
       current_line = true,
       format = function(diagnostic)
-        local icon = ''
-        print(diagnostic.source)
-        if diagnostic.source then
-          if diagnostic.source:match 'Lua' then
-            icon = ' '
-          elseif diagnostic.source:match 'clang' then
-            icon = ' '
-          elseif diagnostic.source:match 'compiler' then -- This is source set by gopls, as confusing as it seems
-            icon = ' '
-          elseif diagnostic.source:match 'pyright' or diagnostic.source:match 'ruff' then
-            icon = ' '
-          elseif diagnostic.source:match 'jinja' then
-            icon = ' '
-          elseif diagnostic.source:match 'Java' then
-            icon = ' '
-          elseif diagnostic.source:match 'typescript' then
-            icon = ' '
-          elseif diagnostic.source:match 'css' then
-            icon = ' '
-          elseif diagnostic.source:match 'json' then
-            icon = ' '
-          elseif diagnostic.source:match 'YAML' then
-            icon = ' '
-          elseif diagnostic.source:match 'shellcheck' then
-            icon = ' '
-          elseif diagnostic.source:match 'docker' then
-            icon = ' '
+        local icons = {
+          ['Lua'] = ' ',
+          ['clang'] = ' ',
+          ['compiler'] = ' ',
+          ['pyright'] = ' ',
+          ['ruff'] = ' ',
+          ['jinja'] = ' ',
+          ['Java'] = ' ',
+          ['typescript'] = ' ',
+          ['css'] = ' ',
+          ['json'] = ' ',
+          ['YAML'] = ' ',
+          ['shellcheck'] = ' ',
+          ['docker'] = ' ',
+        }
+        local matched_icon = ' '
+        for source, icon in pairs(icons) do
+          if diagnostic.source:match(source) then
+            matched_icon = icon
+            break
           end
         end
-        local message = string.format('%s %s', icon, diagnostic.message)
-        return message
+        return string.format('%s %s', matched_icon, diagnostic.message)
       end,
     },
     underline = {
