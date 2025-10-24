@@ -44,6 +44,10 @@ o.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append '<>[]hl'
 
+-- Transparency settings
+o.winblend = 0
+o.pumblend = 0
+
 -- Enable extra filetypes
 vim.filetype.add {
   extension = {
