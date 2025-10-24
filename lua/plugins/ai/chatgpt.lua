@@ -7,9 +7,9 @@ end
 local function init()
   local map = vim.keymap.set
 
-  map('n', '<leader>gc', '<cmd>ChatGPT<CR>', { desc = 'ChatGPT open window' })
-  map('n', '<leader>gs', '<cmd>ChatGPTRun summarize<CR>', { desc = 'ChatGPT summarize buffer' })
-  map('v', '<leader>gs', '<cmd>ChatGPTRun summarize<CR>', { desc = 'ChatGPT summarize selection' })
+  map('n', '<leader>cw', '<cmd>ChatGPT<CR>', { desc = 'ChatGPT open window' })
+  map('n', '<leader>cs', '<cmd>ChatGPTRun summarize<CR>', { desc = 'ChatGPT summarize buffer' })
+  map('v', '<leader>cs', '<cmd>ChatGPTRun summarize<CR>', { desc = 'ChatGPT summarize selection' })
 end
 
 return {
