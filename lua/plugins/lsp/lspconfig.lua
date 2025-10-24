@@ -54,7 +54,7 @@ local function init()
             icon = ' '
           elseif diagnostic.source:match 'compiler' then -- This is source set by gopls, as confusing as it seems
             icon = ' '
-          elseif diagnostic.source:match 'pyright' then
+          elseif diagnostic.source:match 'pyright' or diagnostic.source:match 'ruff' then
             icon = ' '
           elseif diagnostic.source:match 'jinja' then
             icon = ' '

@@ -1,7 +1,21 @@
 local function config()
+  local actions = require('telescope.actions')
+  local action_state = require('telescope.actions.state')
+
+  local function yank_selected_entry(prompt_bufnr)
+    local selection = action_state.get_selected_entry()
+    if selection then
+      local value = selection.value or selection[1] or selection.filename or tostring(selection)
+      vim.fn.setreg('+', value)
+      vim.fn.setreg('"', value)
+      vim.notify('Yanked: ' .. value)
+    end
+    actions.close(prompt_bufnr)
+  end
+
   return {
     defaults = {
-      prompt_prefix = '   ',
+      prompt_prefix = '   ',
       selection_caret = ' ',
       entry_prefix = ' ',
       sorting_strategy = 'ascending',
@@ -14,7 +28,14 @@ local function config()
         height = 0.80,
       },
       mappings = {
-        n = { ['q'] = require('telescope.actions').close },
+        i = {
+          ['<C-c>'] = yank_selected_entry,
+        },
+        n = {
+          ['q'] = actions.close,
+          ['<C-c>'] = yank_selected_entry,
+          ['y'] = yank_selected_entry,
+        },
       },
     },
 
