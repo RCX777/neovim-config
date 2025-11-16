@@ -26,6 +26,7 @@ require('lazy').setup {
     { import = 'plugins.ai' },
     { import = 'plugins.cmp' },
     { import = 'plugins.fmt' },
+    { import = 'plugins.lint' },
     { import = 'plugins.git' },
     { import = 'plugins.lsp' },
     { import = 'plugins.ui' },

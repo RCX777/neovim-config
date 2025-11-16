@@ -52,5 +52,6 @@ o.pumblend = 0
 vim.filetype.add {
   extension = {
     service = 'systemd',
+    Jenkinsfile = 'groovy',
   },
 }
