@@ -41,6 +41,8 @@ local function configure_mappings()
 end
 
 local function init()
+  vim.lsp.inlay_hint.enable(true)
+
   vim.diagnostic.config {
     virtual_lines = {
       current_line = true,
