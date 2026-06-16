@@ -17,7 +17,7 @@ local function configure_mappings()
       if #result == 1 then
         vim.lsp.util.show_document(result[1], 'utf-8')
       else
-        require('telescope.builtin').lsp_definitions()
+        Snacks.picker.lsp_definitions()
       end
     end)
   end
