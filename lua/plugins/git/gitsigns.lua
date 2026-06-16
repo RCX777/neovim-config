@@ -20,17 +20,17 @@ local on_attach = function(bufnr)
     vim.keymap.set(mode, l, r, opts)
   end
 
-  map('n', ']', function()
+  map('n', ']c', function()
     if vim.wo.diff then
-      vim.cmd.normal { ']', bang = true }
+      vim.cmd.normal { ']c', bang = true }
     else
       gitsigns.nav_hunk 'next'
     end
   end)
 
-  map('n', '[', function()
+  map('n', '[c', function()
     if vim.wo.diff then
-      vim.cmd.normal { '[', bang = true }
+      vim.cmd.normal { '[c', bang = true }
     else
       gitsigns.nav_hunk 'prev'
     end

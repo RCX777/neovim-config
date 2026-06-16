@@ -32,6 +32,7 @@ local config = function()
   return {
     sources = {
       { name = 'nvim_lsp' },
+      { name = 'luasnip' },
       { name = 'buffer' },
       { name = 'nvim_lua' },
       { name = 'path' },
@@ -40,8 +41,8 @@ local config = function()
     mapping = {
       ['<Tab>'] = cmp.mapping(tab_complete),
       ['<Left>'] = cmp.mapping.abort(),
-      ['<Down>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior },
-      ['<Up>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior },
+      ['<Down>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+      ['<Up>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
     },
 
     window = {
@@ -92,6 +93,15 @@ return {
         -- setup cmp for autopairs
         local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
         require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done())
+      end,
+    },
+
+    -- snippet engine
+    {
+      'L3MON4D3/LuaSnip',
+      dependencies = { 'rafamadriz/friendly-snippets' },
+      config = function()
+        require('luasnip.loaders.from_vscode').lazy_load()
       end,
     },
 

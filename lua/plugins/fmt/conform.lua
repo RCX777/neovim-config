@@ -2,7 +2,7 @@ local function init()
   vim.keymap.set(
     'n',
     '<leader>fm',
-    function() require('conform').format { lsp_fallback = true } end,
+    function() require('conform').format { lsp_format = 'fallback' } end,
     { desc = 'general format file' }
   )
 end

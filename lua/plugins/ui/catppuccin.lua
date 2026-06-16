@@ -7,11 +7,11 @@ return {
     require('catppuccin').setup(opts)
     vim.cmd.colorscheme 'catppuccin-mocha'
 
-    -- Force transparency after loading
-    vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+    -- catppuccin sets NormalFloat to a surface color even with transparent_background
     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
     vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+
+    -- Force transparency for Telescope windows (nvchad style sets its own bg)
     vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
     vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'none' })
     vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { bg = 'none' })

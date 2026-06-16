@@ -9,7 +9,7 @@ map('v', '<M-Up>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
 
 map('n', '<leader>y', '"+y', { desc = 'Yank into `+` register' })
 map('v', '<leader>y', '"+y', { desc = 'Yank selection into `+` register' })
-map('n', '<leader>y', '"+Y', { desc = 'Yank into `+` register' })
+map('n', '<leader>Y', '"+Y', { desc = 'Yank to EOL into `+` register' })
 
 map('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
   desc = 'Replace all occurences of word under cursor',

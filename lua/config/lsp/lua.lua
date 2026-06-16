@@ -2,6 +2,7 @@ vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
       workspace = {
+        checkThirdParty = false,
         library = {
           vim.fn.expand '$VIMRUNTIME/lua',
           vim.fn.stdpath 'data' .. '/lazy/lazy.nvim/lua/lazy',
