@@ -35,6 +35,9 @@ local on_attach = function(bufnr)
       gitsigns.nav_hunk 'prev'
     end
   end)
+
+  map('n', '<leader>gd', gitsigns.toggle_deleted, { desc = 'Toggle deleted lines (inline ghost text)' })
+  map('n', '<leader>gp', gitsigns.preview_hunk_inline, { desc = 'Preview hunk inline' })
 end
 
 config.on_attach = on_attach
