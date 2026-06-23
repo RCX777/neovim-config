@@ -14,6 +14,8 @@
 │   │   └── lsp
 │   │       └── <lsp>.lua
 │   └── plugins
+│       ├── <subdir>/
+│       │   └── <plugin>.lua
 │       └── <plugin>.lua
 ├─── secrets
 │   └── <secret>
@@ -57,6 +59,5 @@ return {
 
 ## Secrets
 
-The secrets are stored in the `secrets` directory. Here are the secrets you can set:
-- `openai.key`: Your OpenAI API key, used by the `chatgpt.nvim` plugin. If not set, the plugin will not be loaded.
+Secrets are stored in the `secrets/` directory (gitignored). No secrets are currently required — all AI plugins (`avante`, `copilot`, `opencode`) manage their own authentication.
 

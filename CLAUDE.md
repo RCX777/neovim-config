@@ -23,13 +23,13 @@ Stylua config (`.stylua.toml`): 120-column width, 2-space indent, single quotes 
 
 ### Plugin specs (`lua/plugins/`)
 
-Each file returns a lazy.nvim spec table. Subdirectories group plugins by concern: `ai/`, `cmp/`, `fmt/`, `git/`, `lsp/`, `ui/`. All subdirectories are imported explicitly in `config/lazy.lua`.
+Each file returns a lazy.nvim spec table. Subdirectories group plugins by concern: `ai/`, `cmp/`, `fmt/`, `git/`, `lint/`, `lsp/`, `ui/`. All subdirectories are imported explicitly in `config/lazy.lua`.
 
 Lazy.nvim convention used here: `init` runs before the plugin loads (safe for global keymaps even on lazy plugins); `config` runs when the plugin actually loads.
 
 ### LSP setup
 
-LSP uses **Neovim 0.11+ built-in APIs** (`vim.lsp.config()` / `vim.lsp.enable()`), not `require('lspconfig').server.setup()`. Each server has its own file in `lua/config/lsp/<server>.lua`. `lua/plugins/lsp/lspconfig.lua` auto-loads all of them at startup by scanning that directory with `vim.fn.readdir`.
+LSP uses **Neovim 0.11+ built-in APIs** (`vim.lsp.config()` / `vim.lsp.enable()`), not `require('lspconfig').server.setup()`. Each server has its own file in `lua/config/lsp/<server>.lua`. `lua/plugins/lsp/lspconfig.lua` auto-loads all of them at startup by scanning that directory with `vim.fn.readdir`. Inlay hints are enabled globally (`vim.lsp.inlay_hint.enable(true)`).
 
 Two servers are handled differently:
 - **Java** (`jdtls`): started via `ftplugin/java.lua` using `nvim-jdtls`, not lspconfig
@@ -39,7 +39,7 @@ To add a new LSP server: create `lua/config/lsp/<server>.lua` calling `vim.lsp.c
 
 ### Diagnostics and LSP keymaps
 
-Configured in `lua/plugins/lsp/lspconfig.lua` (`init` function). Diagnostics show as virtual lines on the current line only. LSP keymaps (`gd`, `gD`, `]d`, `[d`) are global, not buffer-local. `gd` has a custom fallback: single result jumps directly; multiple results open Telescope.
+Configured in `lua/plugins/lsp/lspconfig.lua` (`init` function). Diagnostics show as virtual lines on the current line only. LSP keymaps (`gd`, `gD`, `]d`, `[d`) are global, not buffer-local. `gd` has a custom fallback: single result jumps directly; multiple results open Snacks picker (`Snacks.picker.lsp_definitions()`).
 
 ### Treesitter
 
@@ -51,6 +51,4 @@ Custom tree-sitter query overrides live in `queries/<lang>/`. These take precede
 
 `ftplugin/<lang>.lua` runs when a buffer's filetype is set. Used for per-language indent settings and (for Java) starting the jdtls client.
 
-### Secrets
-
-`secrets/openai.key` — if present, enables the `chatgpt.nvim` plugin. If absent, the plugin spec returns `{}` (no-op). This file is gitignored.
+`ftplugin/markdown.lua` overrides `gd` buffer-locally: if the cursor is on a `[text](path)` link it opens the target file; otherwise it falls back to `vim.lsp.buf.definition()`.
